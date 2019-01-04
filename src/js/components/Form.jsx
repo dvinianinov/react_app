@@ -1,8 +1,10 @@
 // src/js/components/Form.jsx
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
 import { addArticle } from "../actions";
+import List from "./List.jsx";
 function mapDispatchToProps(dispatch) {
     return {
         addArticle: article => dispatch(addArticle(article))
@@ -30,21 +32,29 @@ class ConnectedForm extends Component {
     render() {
         const { title } = this.state;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="title">Title</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="title"
-                        value={title}
-                        onChange={this.handleChange}
-                    />
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="title">Title</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="title"
+                            value={title}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-success btn-lg">
+                        SAVE
+                    </button>
+                </form>
+                <div>
+                    <List/>
                 </div>
-                <button type="submit" className="btn btn-success btn-lg">
-                    SAVE
-                </button>
-            </form>
+                <div>
+                    <Link to="/"><button>Back to home</button></Link>
+                </div>
+            </div>
         );
     }
 }

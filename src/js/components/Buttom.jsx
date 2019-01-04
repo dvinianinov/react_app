@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getData } from '../actions';
 
 let Button=({getData})=>(
-    <button onClick={getData}>Press to see news</button>
+    <button onClick={getData}>Load mapping</button>
 );
 
 const mapDispatchToProps = {

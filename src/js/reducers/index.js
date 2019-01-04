@@ -1,7 +1,11 @@
 import { ADD_ARTICLE, GET_DATA, DATA_LOADED } from "../constants/action-types";
+
 const initialState = {
-    articles: []
+    articles: [],
+    loading: false,
+    posts: []
 };
+
 function rootReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_ARTICLE:
@@ -11,9 +15,10 @@ function rootReducer(state = initialState, action) {
         case GET_DATA:
             return { ...state, loading: true };
         case DATA_LOADED:
-            return { ...state, posts: action.json[0], loading: false };
+            return { ...state, posts: action.json, loading: false };
         default:
             return state;
     }
 }
+
 export default rootReducer;

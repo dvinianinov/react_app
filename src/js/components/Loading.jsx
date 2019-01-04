@@ -1,15 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 
-let Loading = ({ loading }) => (
-    loading ?
-        <div style={{ textAlign: 'center' }}>
-            <h1>LOADING</h1>
-        </div> :
-        null
-);
+@connect(
+    state => ({
+        loading: state.loading
+    })
+)
 
-const mapStateToProps = (state) => ({loading: state.loading});
-Loading = connect(mapStateToProps,null)(Loading);
+export default class Loading extends React.PureComponent {
+    static propTypes = {
+        loading: PropTypes.bool
+    };
 
-export default Loading;
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const { loading } = this.props;
+
+        return loading ?
+            <div style={{ textAlign: 'center' }}>
+                <h1>LOADING</h1>
+            </div> :
+            null
+    }
+}
