@@ -4,7 +4,13 @@ module.exports = {
   entry: {
     index: ['babel-polyfill', './src/index.js']
   },
+  output: {
+    publicPath: '/'
+  },
   devtool: "eval-source-map",
+  devServer: {
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {
