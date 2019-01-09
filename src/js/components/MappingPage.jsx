@@ -12,7 +12,7 @@ export default class MappingPage extends React.PureComponent {
 
     render() {
         return (
-            <div className="row mt-5">
+            <div className="mapping-page">
                 <h2>Load mapping</h2>
                 <Button/>
                 <Loading/>

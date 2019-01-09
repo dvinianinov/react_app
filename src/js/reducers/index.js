@@ -1,9 +1,10 @@
-import { ADD_ARTICLE, GET_DATA, DATA_LOADED } from "../constants/action-types";
+import { ADD_ARTICLE, GET_DATA, DATA_LOADED, OPEN_MODAL, CLOSE_MODAL } from "../constants/action-types";
 
 const initialState = {
     articles: [],
     loading: false,
-    posts: []
+    posts: [],
+    modalOpen: false
 };
 
 function rootReducer(state = initialState, action) {
@@ -16,6 +17,10 @@ function rootReducer(state = initialState, action) {
             return { ...state, loading: true };
         case DATA_LOADED:
             return { ...state, posts: action.json, loading: false };
+        case OPEN_MODAL:
+            return { ...state, modalOpen: true };
+        case CLOSE_MODAL:
+            return { ...state, modalOpen: false };
         default:
             return state;
     }
